@@ -4,13 +4,17 @@ module Luhn
 
   class << self
 
-    def hello
-      "hello"
+    def ping
+      'pong'
+    end
+
+    def valid?(number)
+      checksum(number)
     end
 
     def calculate_check_digit(number)
       doubles = double_digits(number)
-      sum_of_all(doubles)
+      sum_of_all(doubles) unless null?(doubles)
     end
 
     def double_digits(number)
@@ -36,6 +40,15 @@ module Luhn
 
     protected
 
+    def checksum(number)
+      check_digit = calculate_check_digit(number)
+      unless check_digit.nil?
+        check_digit % 10 == 0 ? true : false
+      else
+        return false
+      end
+    end
+
     def sum_of_all(doubles)
       doubles.inject { |sum, n| sum + n }
     end
@@ -43,6 +56,11 @@ module Luhn
     def all_digits(number)
       ary = number.to_s.split(//)
       return ary.map { |string| string.to_i }
+    end
+
+    def null?(doubles)
+      checked_doubles = doubles.reject { |d| d.eql?(0) }
+      return true if checked_doubles.empty?
     end
 
   end

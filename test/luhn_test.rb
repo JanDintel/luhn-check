@@ -2,8 +2,8 @@ require 'test_helper'
 
 describe 'Luhn' do
 
-  it 'returns hello' do
-    Luhn.hello.must_equal('hello')
+  it 'returns pong' do
+    Luhn.ping.must_equal('pong')
   end
 
   describe 'check_digit' do
@@ -18,6 +18,7 @@ describe 'Luhn' do
         Luhn.calculate_check_digit(700).must_equal(7)
       end
     end
+
   end
 
   describe '.double_digits' do
@@ -42,9 +43,41 @@ describe 'Luhn' do
         Luhn.double_digits(50).wont_equal([10])
       end
     end
+
+  end
+
+  describe 'all 0' do
+
+    it 'rejects number with all 0' do
+      Luhn.valid?(0000000000000000).must_equal(false)
+    end
   end
 
   describe '.valid?' do
+
+    describe 'valid number' do
+      valid_numbers =  [4556974027974373, 4539085529167499, 5247381631434707, 4111111111111111, 5555555555554444,
+                        5511828555531982, 371449635398431, 4716165622199, 869940826641794, 180002230256255,
+                        3096704907107219, 214937935327366, 6011312159763625, 38442242218311]
+      it 'is valid' do
+        valid_numbers.each do |n|
+          Luhn.valid?(n).must_equal(true)
+        end
+      end
+
+    end
+
+    describe 'invalid number' do
+      invalid_numbers =  [3844224221831, 601111111111117, 1234123412341234, 1234567890123456, 111111, 22222222222000,
+                          1111111111111111, 00010000, 23.67, 0000000000000000]
+
+      it 'is invalid' do
+        invalid_numbers.each do |n|
+          Luhn.valid?(n).must_equal(false)
+        end
+      end
+
+    end
   end
 
 end

@@ -10,8 +10,9 @@ Gem::Specification.new do |spec|
   spec.email         = ["janvanderpas@gmail.com"]
   spec.description   = %q{Luhn algorithm checker}
   spec.summary       = %q{Check a number with the Luhn algorithm}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/JanDintel/luhn-check"
   spec.license       = "MIT"
+  spec.platform      = Gem::Platform::RUBY
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
