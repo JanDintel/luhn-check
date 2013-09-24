@@ -1,8 +1,10 @@
-# Luhn::Check
+# Luhn check
 
-With the luhn-check you can check a number with the Luhn algoritme.
+With the luhn-check you can check a number with the Luhn algorithm.
 
 ## Installation
+### Version
+`0.0.1`
 
 Add this line to your application's Gemfile:
 
@@ -18,7 +20,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+After the gem is installed. There are some helpers available.
+
+To check if the number is valid with the Luhn algorithm:
+
+  ```ruby
+  Luhn.valid?(number)
+  Luhn.calculate_check_digit(number)
+  Luhn.double_digits(number) # Array with digits for checksum
+  ```
 
 ## Contributing
 
