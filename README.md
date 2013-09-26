@@ -4,7 +4,7 @@ With the luhn-check you can check a number with the Luhn algorithm.
 
 ## Installation
 ### Version
-`0.0.1`
+`0.0.2`
 
 Add this line to your application's Gemfile:
 
