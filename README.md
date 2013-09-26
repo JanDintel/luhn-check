@@ -25,10 +25,27 @@ After the gem is installed. There are some helpers available.
 To check if the number is valid with the Luhn algorithm:
 
   ```ruby
+  # Check if the number is valid with the Luhn algorithm
   Luhn.valid?(number)
+
+  # Calculate the check digit based on the number
   Luhn.calculate_check_digit(number)
+
+  # Retrieve the check digit of the number (last digit)
+  Luhn.get_check_digit(number)
+
+  # Calculate the sum of the digits after the double action
   Luhn.double_digits(number) # Array with digits for checksum
   ```
+
+## Debug
+
+The gem if you included the gem, you can send a `ping` to the gem and expect `pong` back.
+
+  ```ruby
+  Luhn.ping # => 'pong'
+  ```
+
 
 ## Contributing
 
