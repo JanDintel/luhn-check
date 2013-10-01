@@ -6,9 +6,13 @@ With the luhn-check you can check a number with the Luhn algorithm.
 ### Version
 `0.0.2`
 
+###Gemfile
+
+Since that the namespace in the `lib` directory is different than the name of the gem. You need to require the namespace of the class defined in the `lib` directory. 
+
 Add this line to your application's Gemfile:
 
-    gem 'luhn-check'
+    gem 'luhn-check', '~> 0.0.2', require: 'luhn'
 
 And then execute:
 
