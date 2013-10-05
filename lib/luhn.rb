@@ -69,7 +69,7 @@ module Luhn
       if checked_number.nil?
         return false
       else
-        checked_number.empty? ? true : false
+        checked_number.empty?
       end
     end
 
