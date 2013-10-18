@@ -80,7 +80,7 @@ describe 'Luhn' do
                         3096704907107219, 214937935327366, 6011312159763625, 38442242218311]
       it 'is valid' do
         valid_numbers.each do |n|
-          Luhn.valid?(n).must_equal(true)
+          Luhnc.valid?(n).must_equal(true)
         end
       end
 
