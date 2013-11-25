@@ -80,7 +80,7 @@ describe Base do
   describe '.double_digit_on_even_position' do
     subject { described_class.new(7992739871).double_digit_on_even_position }
 
-    describe 'reverses the number set and on odd position of number' do
+    describe 'reverses the numberset and on a even position of a digit' do
       it 'doubles and sums number' do
         expect(subject).to eql [1, 5, 8, 9, 3, 5, 2, 9, 9, 5]
       end
