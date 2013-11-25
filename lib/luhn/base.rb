@@ -10,7 +10,9 @@ class Base
   end
 
   def validate
-    checksum % 10 == 0
+    if number_meets_requirements?
+      checksum % 10 == 0
+    end
   end
 
   def check_digit
@@ -38,6 +40,11 @@ class Base
   end
 
   private
+
+  def number_meets_requirements?
+    true unless number_to_validate.class == String ||
+                number_to_validate == 0
+  end
 
   def digits_of_number_to_validate
     # Reverse number_to_validate to start

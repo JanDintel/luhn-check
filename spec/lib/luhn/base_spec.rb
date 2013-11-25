@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe Base do
   let(:base)    { described_class.new(12345) }
@@ -31,12 +30,11 @@ describe Base do
 
     context 'invalid numbers' do
       let(:invalid_numbers) {  [3844224221831, 601111111111117, 1234123412341234, 1234567890123456, 111111,
-                                22222222222000, 1111111111111111, 00010000, 23.67, 0000000000000000]}
+                                22222222222000, 1111111111111111, 00010000, 23.67, 0000000000000000, '123']}
 
-      pending 'returns false' do
+      it 'returns false' do
         invalid_numbers.each do |number|
-          # binding.pry if described_class.valid?(number)
-          # expect(described_class.valid?(number)).to be_false
+          expect(described_class.valid?(number)).to be_false
         end
       end
     end
