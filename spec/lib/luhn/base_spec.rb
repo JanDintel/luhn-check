@@ -77,7 +77,6 @@ describe Base do
     end
   end
 
-  # TODO: Make check for even
   describe '.double_digit_on_even_position' do
     subject { described_class.new(7992739871).double_digit_on_even_position }
 
