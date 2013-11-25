@@ -1,8 +1,8 @@
 class Base
-  attr_reader :number, :check_digit
+  attr_reader :number_to_validate, :check_digit
 
-  def initialize(number)
-    @number = number
+  def initialize(number_to_validate)
+    @number_to_validate = number_to_validate
     # @check_digit = calculate_check_digit
   end
 
@@ -19,8 +19,9 @@ class Base
   end
 
   def double_odd_numbers
-    # Reverse number to start the itteration from right
-    digits_of_number = split_to_numbers(number).reverse
+    # Reverse number_to_validate to start
+    # the itteration from right to left
+    digits_of_number = split_to_numbers(number_to_validate).reverse
     total = []
     digits_of_number.each_with_index do |digit, i|
       if i.odd? && product_exceeds_nine(digit)
