@@ -1,4 +1,4 @@
-class Luhnc
+class Base
   attr_reader :number, :check_digit
 
   def initialize(number)

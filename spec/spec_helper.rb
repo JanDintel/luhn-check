@@ -1,5 +1,4 @@
 require 'luhn'
-require 'luhnc'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |c|
