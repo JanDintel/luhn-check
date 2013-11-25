@@ -6,7 +6,7 @@ describe Base do
 
   describe 'attributes' do
     it 'responds to attribute' do
-      [:number_to_validate, :check_digit].each do |attr|
+      [:number_to_validate].each do |attr|
         expect(base).to respond_to attr
       end
     end

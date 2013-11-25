@@ -1,9 +1,8 @@
 class Base
-  attr_reader :number_to_validate, :check_digit
+  attr_reader :number_to_validate
 
   def initialize(number_to_validate)
     @number_to_validate = number_to_validate
-    # @check_digit = calculate_check_digit
   end
 
   def self.valid?(number)
