@@ -2,8 +2,10 @@ require 'test_helper'
 
 describe 'Luhn' do
 
-  it 'returns pong' do
-    Luhn.ping.must_equal('pong')
+  describe '.ping' do
+    it 'returns pong' do
+      Luhn.ping.must_equal('pong')
+    end
   end
 
   describe 'check_digit' do
