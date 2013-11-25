@@ -45,8 +45,7 @@ describe Base do
     describe 'validates the checksum' do
       context 'modulo 10 is equal to 0' do
         before  { described_class.any_instance.
-                    stub(:checksum).
-                    and_return(60) }
+                    stub(:checksum).and_return 60 }
 
         it 'returns true' do
           expect(base.validate).to be_true
@@ -55,8 +54,7 @@ describe Base do
 
       context 'modulo 10 is NOT equal to 0' do
         before  { described_class.any_instance.
-                    stub(:checksum).
-                    and_return(12) }
+                    stub(:checksum).and_return 12 }
 
         it 'returns false' do
           expect(base.validate).to be_false
@@ -67,8 +65,7 @@ describe Base do
 
   describe '.check_digit' do
     before  { described_class.any_instance.
-                stub(:checksum).
-                and_return(126) }
+                stub(:checksum).and_return 126 }
 
     it 'calculates the check_digit out of the checksum' do
       expect(base.check_digit).to eql 6
