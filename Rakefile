@@ -1,7 +1,14 @@
-require 'bundler/gem_tasks'
-require 'rake/testtask'
-
-Rake::TestTask.new do |t|
-  t.libs   << 'test'
-  t.pattern = 'test/**/*_test.rb'
+#!/usr/bin/env rake
+begin
+  require 'bundler/setup'
+rescue LoadError
+  puts 'You must run `gem install bundler` and `bundle install` to run rake tasks'
 end
+
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:core) do |spec|
+  spec.rspec_opts = ['--backtrace']
+end
+
+task :default => [:core]
