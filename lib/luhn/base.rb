@@ -15,19 +15,20 @@ class Base
   end
 
   def sum_of_all_numbers
-    double_odd_numbers.inject { |sum, n| sum + n }
+    double_digit_on_even_position.inject { |sum, n| sum + n }
   end
 
-  def double_odd_numbers
+  def double_digit_on_even_position
     # Reverse number_to_validate to start
     # the itteration from right to left
     total = []
     digits_of_number_to_validate = split_to_number_array(number_to_validate).reverse
-    digits_of_number_to_validate.each_with_index do |digit, number_position|
-      if number_position.odd? && product_exceeds_nine(digit)
+    # Offset of 1, so you can call even? instead of odd? on number_position
+    digits_of_number_to_validate.to_enum.with_index(1).each do |digit, number_position|
+      if number_position.even? && product_exceeds_nine(digit)
         digits_of_product = split_to_number_array(multiply(digit))
         total << digits_of_product.inject { |sum, n| sum + n }
-      elsif number_position.odd? && !product_exceeds_nine(digit)
+      elsif number_position.even? && !product_exceeds_nine(digit)
         total << multiply(digit)
       else
         total << digit

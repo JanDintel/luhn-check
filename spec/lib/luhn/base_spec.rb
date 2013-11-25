@@ -69,17 +69,17 @@ describe Base do
 
   describe '.sum_of_all_numbers' do
     before  { described_class.any_instance.
-                stub(:double_odd_numbers).
+                stub(:double_digit_on_even_position).
                 and_return [1,2,3,4,5] }
 
-    it 'sums up the double_odd_numbers' do
+    it 'sums up the double_digit_on_even_position' do
       expect(base.sum_of_all_numbers).to eql 15
     end
   end
 
   # TODO: Make check for even
-  describe '.double_odd_numbers' do
-    subject { described_class.new(7992739871).double_odd_numbers }
+  describe '.double_digit_on_even_position' do
+    subject { described_class.new(7992739871).double_digit_on_even_position }
 
     describe 'reverses the number set and on odd position of number' do
       it 'doubles and sums number' do
@@ -87,7 +87,7 @@ describe Base do
       end
 
       context 'number ends with 0' do
-        subject { described_class.new(8960).double_odd_numbers }
+        subject { described_class.new(8960).double_digit_on_even_position }
 
         it 'keeps the 0, doubles and sums number' do
           expect(subject).to eql [0,3,9,7]
