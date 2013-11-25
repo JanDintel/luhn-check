@@ -10,9 +10,7 @@ class Base
   end
 
   def validate
-    if number_meets_requirements?
-      checksum % 10 == 0
-    end
+    checksum % 10 == 0 if number_meets_requirements?
   end
 
   def check_digit
