@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe Base do
   let(:base)    { described_class.new(12345) }
@@ -13,10 +14,31 @@ describe Base do
 
   ## Class methods
   describe '.valid?' do
-    subject { described_class.valid?(4556974027974373) }
+    context 'validate numbers' do
+      # Different test creditcardnumbers from: Visa,
+      # American Express, Diners Club and Mastercard
+      let(:validate_numbers) { [4556974027974373, 4539085529167499, 5247381631434707, 4111111111111111,
+                                5555555555554444, 5511828555531982, 371449635398431, 4716165622199,
+                                869940826641794, 180002230256255, 3096704907107219, 214937935327366,
+                                6011312159763625, 38442242218311] }
 
-    it 'returns true' do
-      expect(subject).to be_true
+      it 'returns true' do
+        validate_numbers.each do |number|
+          expect(described_class.valid?(number)).to be_true
+        end
+      end
+    end
+
+    context 'invalid numbers' do
+      let(:invalid_numbers) {  [3844224221831, 601111111111117, 1234123412341234, 1234567890123456, 111111,
+                                22222222222000, 1111111111111111, 00010000, 23.67, 0000000000000000]}
+
+      pending 'returns false' do
+        invalid_numbers.each do |number|
+          # binding.pry if described_class.valid?(number)
+          # expect(described_class.valid?(number)).to be_false
+        end
+      end
     end
   end
 
