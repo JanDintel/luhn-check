@@ -19,7 +19,7 @@ class Base
   end
 
   def checksum
-    double_digit_on_even_position.inject(:+)
+    @checksum ||= double_digit_on_even_position.inject(:+)
   end
 
   def double_digit_on_even_position
