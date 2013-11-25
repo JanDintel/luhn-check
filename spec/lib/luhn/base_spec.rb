@@ -44,10 +44,10 @@ describe Base do
 
   ## Instance methods
   describe '.validate' do
-    describe 'validates the sum_of_all_numbers' do
+    describe 'validates the checksum' do
       context 'modulo 10 is equal to 0' do
         before  { described_class.any_instance.
-                    stub(:sum_of_all_numbers).
+                    stub(:checksum).
                     and_return(60) }
 
         it 'returns true' do
@@ -57,7 +57,7 @@ describe Base do
 
       context 'modulo 10 is NOT equal to 0' do
         before  { described_class.any_instance.
-                    stub(:sum_of_all_numbers).
+                    stub(:checksum).
                     and_return(12) }
 
         it 'returns false' do
@@ -67,13 +67,13 @@ describe Base do
     end
   end
 
-  describe '.sum_of_all_numbers' do
+  describe '.checksum' do
     before  { described_class.any_instance.
                 stub(:double_digit_on_even_position).
                 and_return [1,2,3,4,5] }
 
     it 'sums up the double_digit_on_even_position' do
-      expect(base.sum_of_all_numbers).to eql 15
+      expect(base.checksum).to eql 15
     end
   end
 

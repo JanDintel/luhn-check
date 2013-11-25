@@ -11,10 +11,10 @@ class Base
   end
 
   def validate
-    sum_of_all_numbers % 10 == 0
+    checksum % 10 == 0
   end
 
-  def sum_of_all_numbers
+  def checksum
     double_digit_on_even_position.inject(:+)
   end
 
@@ -22,10 +22,10 @@ class Base
     total = []
     # Offset of 1, so you can call even? instead of odd? on a number_position
     digits_of_number_to_validate.to_enum.with_index(1).each do |digit, number_position|
-      if number_position.even? && product_exceeds_nine(digit)
+      if number_position.even? && product_of_digit_exceeds_nine(digit)
         digits_of_product = split_to_number_array multiply(digit)
         total << digits_of_product.inject(:+)
-      elsif number_position.even? && !product_exceeds_nine(digit)
+      elsif number_position.even? && !product_of_digit_exceeds_nine(digit)
         total << multiply(digit)
       else
         total << digit
@@ -46,7 +46,7 @@ class Base
     numbers.to_s.split(//).map(&:to_i)
   end
 
-  def product_exceeds_nine(digit)
+  def product_of_digit_exceeds_nine(digit)
     multiply(digit) > 9
   end
 
