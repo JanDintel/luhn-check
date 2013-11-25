@@ -67,6 +67,16 @@ describe Base do
     end
   end
 
+  describe '.check_digit' do
+    before  { described_class.any_instance.
+                stub(:checksum).
+                and_return(126) }
+
+    it 'calculates the check_digit out of the checksum' do
+      expect(base.check_digit).to eql 6
+    end
+  end
+
   describe '.checksum' do
     before  { described_class.any_instance.
                 stub(:double_digit_on_even_position).

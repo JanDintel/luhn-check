@@ -14,6 +14,10 @@ class Base
     checksum % 10 == 0
   end
 
+  def check_digit
+    checksum.to_s[-1].to_i
+  end
+
   def checksum
     double_digit_on_even_position.inject(:+)
   end
