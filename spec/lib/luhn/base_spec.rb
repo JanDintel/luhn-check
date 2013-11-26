@@ -13,7 +13,7 @@ describe Base do
 
   ## Class methods
   describe '.valid?' do
-    context 'validate numbers' do
+    context 'valid numbers' do
       # Different test creditcardnumbers from: Visa,
       # American Express, Diners Club and Mastercard
       let(:validate_numbers) { [4556974027974373, 4539085529167499, 5247381631434707, 4111111111111111,
