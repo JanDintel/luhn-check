@@ -13,16 +13,16 @@ describe Base do
 
   ## Class methods
   describe '.valid?' do
-    context 'validate numbers' do
+    context 'valid numbers' do
       # Different test creditcardnumbers from: Visa,
       # American Express, Diners Club and Mastercard
-      let(:validate_numbers) { [4556974027974373, 4539085529167499, 5247381631434707, 4111111111111111,
+      let(:valid_numbers) { [4556974027974373, 4539085529167499, 5247381631434707, 4111111111111111,
                                 5555555555554444, 5511828555531982, 371449635398431, 4716165622199,
                                 869940826641794, 180002230256255, 3096704907107219, 214937935327366,
                                 6011312159763625, 38442242218311] }
 
       it 'returns true' do
-        validate_numbers.each do |number|
+        valid_numbers.each do |number|
           expect(described_class.valid?(number)).to be_true
         end
       end
@@ -42,23 +42,21 @@ describe Base do
 
   ## Instance methods
   describe '.validate' do
-    describe 'validates the checksum' do
-      context 'modulo 10 is equal to 0' do
-        before  { described_class.any_instance.
-                    stub(:checksum).and_return 60 }
+    context 'modulo 10 is equal to 0' do
+      before  { described_class.any_instance.
+                  stub(:checksum).and_return 60 }
 
-        it 'returns true' do
-          expect(base.validate).to be_true
-        end
+      it 'returns true' do
+        expect(base.validate).to be_true
       end
+    end
 
-      context 'modulo 10 is NOT equal to 0' do
-        before  { described_class.any_instance.
-                    stub(:checksum).and_return 12 }
+    context 'modulo 10 is NOT equal to 0' do
+      before  { described_class.any_instance.
+                  stub(:checksum).and_return 12 }
 
-        it 'returns false' do
-          expect(base.validate).to be_false
-        end
+      it 'returns false' do
+        expect(base.validate).to be_false
       end
     end
   end
