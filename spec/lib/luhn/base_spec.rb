@@ -4,7 +4,7 @@ describe Base do
   let(:base)    { described_class.new(12345) }
 
   describe 'attributes' do
-    it 'responds to attribute' do
+    it 'responds' do
       [:number_to_validate].each do |attr|
         expect(base).to respond_to attr
       end
@@ -43,28 +43,19 @@ describe Base do
   ## Instance methods
   describe '.validate' do
     context 'modulo 10 is equal to 0' do
-      before  { described_class.any_instance.
-                  stub(:checksum).and_return 60 }
-
-      it 'returns true' do
-        expect(base.validate).to be_true
-      end
+      before  { described_class.any_instance.stub(:checksum).and_return 60 }
+      specify { expect(base.validate).to be_true }
     end
 
     context 'modulo 10 is NOT equal to 0' do
-      before  { described_class.any_instance.
-                  stub(:checksum).and_return 12 }
-
-      it 'returns false' do
-        expect(base.validate).to be_false
-      end
+      before  { described_class.any_instance.stub(:checksum).and_return 12 }
+      specify { expect(base.validate).to be_false }
     end
   end
 
   describe '.check_digit' do
-    before  { described_class.any_instance.
-                stub(:checksum).and_return 126 }
-
+    before { described_class.any_instance.stub(:checksum).and_return 126 }
+    
     it 'calculates the check_digit out of the checksum' do
       expect(base.check_digit).to eql 6
     end
