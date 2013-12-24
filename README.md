@@ -3,16 +3,15 @@
 With the luhn-check gem you can validate a number with the Luhn algorithm.
 This is commonly used to check validity of creditcard numbers and others.
 
-Version
-`0.0.3`
-
 ## Installation
 
 In your Gemfile:
 
-    gem 'luhn-check', '~> 0.0.3', require: 'luhn'
+```ruby
+gem 'luhn-check', '~> 0.0.3', require: 'luhn'
+```
 
-Or
+Or:
 
     $ gem install luhn-check
 
@@ -20,9 +19,23 @@ Or
 
 Validate a number:
 
-  ```ruby
-  Luhn.valid?(number)
-  ```
+```ruby
+Luhn.valid?(number)              #=> true or false
+Luhn.valid?(4539085529167499)    #=> true
+```
+
+## Troubleshooting
+
+### Requirements of number
+```ruby
+LuhnError::RequirementError
+```
+
+The number you want to validate must be a least:
+
+* From the `Fixnum` class
+* Positive
+* Not 0 (zero)
 
 ## Contributing
 1. Fork
