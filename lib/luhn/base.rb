@@ -4,6 +4,7 @@ module Luhn
 
     def initialize(number_to_validate)
       @number_to_validate = number_to_validate
+      number_meets_requirements?
     end
 
     def self.valid?(number)
@@ -11,7 +12,7 @@ module Luhn
     end
 
     def validate
-      checksum % 10 == 0 if number_meets_requirements?
+      checksum % 10 == 0
     end
 
     def check_digit
@@ -41,8 +42,9 @@ module Luhn
     private
 
     def number_meets_requirements?
-      true unless number_to_validate.class == String ||
-                  number_to_validate == 0
+      raise_fixnum_error    unless number_to_validate.class == Fixnum
+      raise_zero_error      if number_to_validate.zero?
+      raise_negative_error  if number_to_validate < 0
     end
 
     def digits_of_number_to_validate
@@ -61,6 +63,18 @@ module Luhn
 
     def multiply(digit)
       digit * 2
+    end
+
+    def raise_fixnum_error
+      raise(Luhn::RequirementError, 'Number must be of Fixnum')
+    end
+
+    def raise_zero_error
+      raise(Luhn::RequirementError, 'Number is not allowed to be 0 (zero)')
+    end
+
+    def raise_negative_error
+      raise(Luhn::RequirementError, 'Number is not allowed to be negative')
     end
   end
 end

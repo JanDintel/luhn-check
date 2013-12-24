@@ -25,8 +25,8 @@ describe Luhn::Base do
     end
 
     context 'invalid numbers' do
-      let(:invalid_numbers) {  [3844224221831, 601111111111117, 1234123412341234, 1234567890123456, 111111,
-                                22222222222000, 1111111111111111, 00010000, 23.67, 0000000000000000, '123']}
+      let(:invalid_numbers) {  [3844224221831, 601111111111117, 1234123412341234, 1234567890123456,
+                                111111, 22222222222000, 1111111111111111, 00010000]}
 
       it 'returns false' do
         invalid_numbers.each do |number|
@@ -37,6 +37,27 @@ describe Luhn::Base do
   end
 
   ## Instance methods
+  describe 'initializing' do
+    context 'number meets the requirements' do
+      specify { expect(subject).to be_true }
+    end
+
+    context 'number does NOT meet the requirements' do
+      context 'is not a Fixnum' do
+        specify { expect{ described_class.new(23.67) }.to raise_error(Luhn::RequirementError, 'Number must be of Fixnum') }
+        specify { expect{ described_class.new('123') }.to raise_error(Luhn::RequirementError, 'Number must be of Fixnum') }
+      end
+
+      context 'number is 0 (zero)' do
+        specify { expect{ described_class.new(0) }.to raise_error(Luhn::RequirementError, 'Number is not allowed to be 0 (zero)') }
+      end
+
+      context 'number is negative' do
+        specify { expect{ described_class.new(-123) }.to raise_error(Luhn::RequirementError, 'Number is not allowed to be negative') }
+      end
+    end
+  end
+
   describe '.validate' do
     context 'modulo 10 is equal to 0' do
       before  { described_class.any_instance.stub(:checksum).and_return 60 }
