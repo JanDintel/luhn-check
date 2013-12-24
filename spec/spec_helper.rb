@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 require 'luhn'
 
 RSpec.configure do |config|
