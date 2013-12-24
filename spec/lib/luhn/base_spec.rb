@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Base do
+describe Luhn::Base do
   let(:base)    { described_class.new(12345) }
 
   describe 'attributes' do
@@ -55,7 +55,7 @@ describe Base do
 
   describe '.check_digit' do
     before { described_class.any_instance.stub(:checksum).and_return 126 }
-    
+
     it 'calculates the check_digit out of the checksum' do
       expect(base.check_digit).to eql 6
     end
