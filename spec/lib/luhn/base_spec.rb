@@ -1,14 +1,10 @@
 require 'spec_helper'
 
 describe Luhn::Base do
-  let(:base)    { described_class.new(12345) }
+  subject { described_class.new(12345) }
 
-  describe 'attributes' do
-    it 'responds' do
-      [:number_to_validate].each do |attr|
-        expect(base).to respond_to attr
-      end
-    end
+  describe 'response to attributes' do
+    it { should respond_to :number_to_validate }
   end
 
   ## Class methods
@@ -44,12 +40,12 @@ describe Luhn::Base do
   describe '.validate' do
     context 'modulo 10 is equal to 0' do
       before  { described_class.any_instance.stub(:checksum).and_return 60 }
-      specify { expect(base.validate).to be_true }
+      specify { expect(subject.validate).to be_true }
     end
 
     context 'modulo 10 is NOT equal to 0' do
       before  { described_class.any_instance.stub(:checksum).and_return 12 }
-      specify { expect(base.validate).to be_false }
+      specify { expect(subject.validate).to be_false }
     end
   end
 
@@ -57,7 +53,7 @@ describe Luhn::Base do
     before { described_class.any_instance.stub(:checksum).and_return 126 }
 
     it 'calculates the check_digit out of the checksum' do
-      expect(base.check_digit).to eql 6
+      expect(subject.check_digit).to eql 6
     end
   end
 
@@ -67,7 +63,7 @@ describe Luhn::Base do
                 and_return [1,2,3,4,5] }
 
     it 'sums up the double_digit_on_even_position' do
-      expect(base.checksum).to eql 15
+      expect(subject.checksum).to eql 15
     end
   end
 
