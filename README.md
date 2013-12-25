@@ -1,5 +1,8 @@
 # Luhn check
 
+[![Coverage Status](https://coveralls.io/repos/JanDintel/luhn-check/badge.png?branch=master)](https://coveralls.io/r/JanDintel/luhn-check?branch=master)
+[![Build Status](https://travis-ci.org/JanDintel/luhn-check.png?branch=master)](https://travis-ci.org/JanDintel/luhn-check)
+
 With the luhn-check gem you can validate a number with the Luhn algorithm.
 This is commonly used to check validity of creditcard numbers and others.
 
