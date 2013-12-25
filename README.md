@@ -11,7 +11,7 @@ This is commonly used to check validity of creditcard numbers and others.
 In your Gemfile:
 
 ```ruby
-gem 'luhn-check', '~> 0.0.3', require: 'luhn'
+gem 'luhn-check', '~> 0.0.5', require: 'luhn'
 ```
 
 Or:
